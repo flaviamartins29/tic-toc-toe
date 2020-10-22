@@ -31,41 +31,49 @@ function Casa({ x, y, jogadorAtual, onJogada }) {
 // é de logica de programação
 
 
-function verificarSeJogoTerminou(jogadas) { 
-
-  const jogadaBoa_01 = {x: 0, y: 1, x: 1, y: 1, x: 2, y: 1}
-  const jogadaBoa_02 = {x: 0, y: 0, x: 1, y: 0, x: 2, y: 0}
-  const jogadaBoa_03 = {x: 0, y: 2, x: 1, y: 2, x: 2, y: 2}
-  const jogadaBoa_04 = {x: 0, y: 0, x: 1, y: 1, x: 2, y: 2}
-  const jogadaBoa_05 = {x: 0, y: 2, x: 1, y: 1, x: 2, y: 0}
-  const jogadaBoa_06 = {x: 0, y: 1, x: 1, y: 1, x: 2, y: 1}
-    //const jogadaBoa_07 =
-    //const jogadaBoa_08 =  
-
-
-  if (jogadas.length >= 5 ){
-    jogadas.map(game=>{
-   
-      if (jogadaBoa_01 || jogadaBoa_02 || jogadaBoa_03 || jogadaBoa_04  || jogadaBoa_05 || jogadaBoa_06 === game === "X" ){
-        console.log("to aqui")
+function verificarLinhasEColunas(jogadas) {
+  for (let direcao of ['x', 'y']) {
+    for (let jogador of [jogadorX, jogadorO]) {
+      for (let i = 0; i < 3; i++) {
+        const tem3Jogadas = jogadas.filter(function (jogada){
+          return jogada[direcao] === i && jogada.jogador === jogador
+        }).length === 3
+    
+        if(tem3Jogadas) {
+          return jogador
+        }
       }
-
-
-    })
-
-  if (jogadas.length === 9){
-  
-    alert('GAME OVER')
-
+    }
   }
 }
 
+function verificarDiagonais(jogadas) {
+  // Dever de casa: implementar as diagonais
+}
 
-console.log(jogadas)    
-  return null
+function verificarSeJogoTerminou(jogadas) { 
+  //  [0, 0] | [1, 0] | [2, 0]
+  //  [0, 1] | [1, 1] | [2, 1]
+  //  [0, 2] | [1, 2] | [2, 2]
+  console.log(jogadas) 
 
-} 
+  if (jogadas.length >= 5 ){
+    // 1. Um linha inteira com o mesmo jogador
+    // 2. Uma coluna inteira com o mesmo jogador
+    // 3. Diagonais
 
+    // curto circuito / short circuit
+    // Retornar null, se nao houve vencedor -> valores falsos: null, undefined, 0, false
+    // Retornar o vencedor, caso exista -> 
+    return verificarLinhasEColunas(jogadas) || verificarDiagonais(jogadas)
+  } 
+
+  if (jogadas.length === 9){
+    return 'EMPATE'
+  } else {
+    return null
+  }
+}
 
 
       // Se o jogo terminou;
