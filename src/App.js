@@ -207,6 +207,7 @@ function App() {
           y={2}
           jogadorAtual={jogadorAtual}
           onJogada={processarJogada}
+          
         />
       </div>
     </>
