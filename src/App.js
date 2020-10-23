@@ -214,3 +214,8 @@ function App() {
 }
 
 export default App;
+
+
+/// colacar o tabuleiro no meio da tela
+/// limpar  a cada vencedor encontrado
+
