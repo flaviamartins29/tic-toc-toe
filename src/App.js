@@ -119,6 +119,7 @@ function App() {
 
   const processarJogada = (jogada) => {
     let proximoJogador;
+    
 
     if (jogadorAtual === jogadorX) {
       proximoJogador = jogadorO;
@@ -150,65 +151,19 @@ function App() {
     <>
       <div>JOGADOR ATUAL: {jogadorAtual}</div>
       <div>
-        <Casa
-          x={0}
-          y={0}
-          jogadorAtual={jogadorAtual}
-          onJogada={processarJogada}
-        />
-        <Casa
-          x={0}
-          y={1}
-          jogadorAtual={jogadorAtual}
-          onJogada={processarJogada}
-        />
-        <Casa
-          x={0}
-          y={2}
-          jogadorAtual={jogadorAtual}
-          onJogada={processarJogada}
-        />
+        <Casa x={0}y= {0} jogadorAtual= {jogadorAtual} onJogada={processarJogada}/>
+        <Casa x={0} y={1} jogadorAtual={jogadorAtual} onJogada={processarJogada}/>
+        <Casa x={0} y={2} jogadorAtual={jogadorAtual} onJogada={processarJogada}/>
       </div>
       <div>
-        <Casa
-          x={1}
-          y={0}
-          jogadorAtual={jogadorAtual}
-          onJogada={processarJogada}
-        />
-        <Casa
-          x={1}
-          y={1}
-          jogadorAtual={jogadorAtual}
-          onJogada={processarJogada}
-        />
-        <Casa
-          x={1}
-          y={2}
-          jogadorAtual={jogadorAtual}
-          onJogada={processarJogada}
-        />
+        <Casa x={1} y={0} jogadorAtual={jogadorAtual} onJogada={processarJogada}/>
+        <Casa x={1} y={1} jogadorAtual={jogadorAtual} onJogada={processarJogada}/>
+        <Casa x={1} y={2} jogadorAtual={jogadorAtual} onJogada={processarJogada}/>
       </div>
       <div>
-        <Casa
-          x={2}
-          y={0}
-          jogadorAtual={jogadorAtual}
-          onJogada={processarJogada}
-        />
-        <Casa
-          x={2}
-          y={1}
-          jogadorAtual={jogadorAtual}
-          onJogada={processarJogada}
-        />
-        <Casa
-          x={2}
-          y={2}
-          jogadorAtual={jogadorAtual}
-          onJogada={processarJogada}
-          
-        />
+        <Casa x={2} y={0} jogadorAtual={jogadorAtual} onJogada={processarJogada}/>
+        <Casa x={2} y={1} jogadorAtual={jogadorAtual} onJogada={processarJogada}/>
+        <Casa x={2} y={2} jogadorAtual={jogadorAtual} onJogada={processarJogada}/>
       </div>
     </>
   );
