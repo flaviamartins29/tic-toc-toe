@@ -47,11 +47,36 @@ function verificarLinhasEColunas(jogadas) {
   }
 }
 
+// [{}, {x, y, jogador}, {}, {}, {} , {}] => lembrar do exmeplo da caixa de chocolate e dos sabores do chocolate
+
+function compararJogadas (jogadaA, jogadaB) {
+  return (
+    jogadaA.x === jogadaB.x &&
+    jogadaA.y === jogadaB.y &&
+    jogadaA.jogador === jogadaB.jogador
+  )
+}
+
 function verificarDiagonais(jogadas) {
   for (let jogador of [jogadorX, jogadorO]) {
-    if (jogadas.x === jogadas.y && jogador === jogador) {
+    const diagonal1Tem3Jogadas = jogadas
+      .filter((jogada) => jogada.x === jogada.y && jogada.jogador === jogador)
+      .length === 3
+
+    if (diagonal1Tem3Jogadas) {
+      return jogador
     }
-    return jogador;
+
+    const diagonal2Tem3Jogadas = jogadas
+      .filter((jogada) => 
+        compararJogadas(jogada, { x: 2, y: 0, jogador }) ||
+        compararJogadas(jogada, { x: 1, y: 1, jogador }) ||
+        compararJogadas(jogada, { x: 0, y: 2, jogador })
+      ).length === 3
+
+    if (diagonal2Tem3Jogadas) {
+      return jogador
+    }
   }
 }
 
